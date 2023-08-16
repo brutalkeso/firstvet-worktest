@@ -1,6 +1,5 @@
 import {
   StyleSheet,
-  ActivityIndicator,
   View,
   Text,
   TouchableOpacity,

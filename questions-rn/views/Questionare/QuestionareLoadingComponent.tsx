@@ -1,4 +1,4 @@
-import {Text, View} from 'react-native';
+import {View} from 'react-native';
 import {StartState} from '../StartState';
 import LoadingComponent from '../../reusable-components/LoadingComponent';
 import ErrorComponent from '../../reusable-components/ErrorComponent';

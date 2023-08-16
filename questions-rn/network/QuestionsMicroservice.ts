@@ -21,7 +21,7 @@ class QuestionsMicroservice {
       })
       .then(r => {
         // added this just so loading is shown when running against local server
-        return new Promise((res, _) => {
+        return new Promise(res => {
           setTimeout(() => {
             res(r);
           }, 1000);

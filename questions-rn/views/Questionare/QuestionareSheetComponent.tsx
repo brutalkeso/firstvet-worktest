@@ -166,7 +166,7 @@ const updateAnswerCheckbox = (
   index: number
 ) => {
   if (!answer.choiceAnswers) {
-    answer.choiceAnswers = alternatives.map(_ => false);
+    answer.choiceAnswers = alternatives.map(() => false);
   }
   answer.choiceAnswers[index] = !answer.choiceAnswers[index];
 };
@@ -176,7 +176,7 @@ const updateAnswerRadio = (
   answer: AnswerHolder,
   index: number
 ) => {
-  answer.choiceAnswers = alternatives.map(_ => false);
+  answer.choiceAnswers = alternatives.map(() => false);
   answer.choiceAnswers[index] = true;
 };
 
