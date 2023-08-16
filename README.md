@@ -15,8 +15,6 @@ npm run start
 If your running on device, duplicate the .env file and name it .env.local, 
 changing the url to your computers ip.
 
-# Running tests
-
 # Linting
 
 This project uses GTS, youll find the commands in the package.json files
