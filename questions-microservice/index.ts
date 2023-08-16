@@ -1,5 +1,5 @@
 import express from "express"
-import questions from "./src/paths/questions"
+import questions from "./src/paths/Questions"
 import { setGet } from "./src/PathTypeHelpers"
 
 const app=express()

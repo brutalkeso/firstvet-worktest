@@ -1,9 +1,9 @@
 import { ServerRequest, ServerResponse } from "../WebServerInterfaces"
 import { sendEmptySuccess, sendSuccess } from "../ResponseTypesafety"
-import { QuestionInput } from "@/shared-types/QuestionsResponse"
+import { mockQuestions } from "./QuestionsData"
 
 const questions=(req: ServerRequest, res: ServerResponse) => {
-    return sendSuccess("a response", res)
+    return sendSuccess(mockQuestions, res)
 }
 
 export default questions
