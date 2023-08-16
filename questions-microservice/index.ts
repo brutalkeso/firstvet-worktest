@@ -5,10 +5,8 @@ import { setGet } from "./src/PathTypeHelpers"
 const app=express()
 const port=8080
 
-// paths
 setGet(app, "/questions", questions)
 
-// start web server
 try {
     app.listen(port, (): void => {
         console.log(`Connected successfully on port ${port}`);

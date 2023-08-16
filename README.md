@@ -10,7 +10,12 @@ nvm use 20.5.1
 
 ## Install terraform
 
-# Running 
+# Running app
+npm install
+npm run start
+
+If you are running the server locally, duplicate the .env file and name it .env.local, 
+changing the url to your servers ip.
 
 # Deploying backend service
 
