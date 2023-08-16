@@ -7,11 +7,12 @@ import { StartState } from "../StartState"
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { AppScreens } from "../../AppScreens"
 
-import { QuestionPages, Answer } from "@/shared-types/QuestionsResponse"
+import { QuestionPages } from "@/shared-types/QuestionsResponse"
+import { AnswerHolder } from "../../AnswerHolder"
 import QuestionareSheetComponent from "./QuestionareSheetComponent"
 
-const markAsAcceptableIfAnswered=(answer: Answer) => {
-    switch (answer.input) {
+const markAsAcceptableIfAnswered=(answer: AnswerHolder) => {
+    switch (answer.question.input) {
         case "freetext":
             // only text with length over one is acceptable
             answer.acceptable=!!answer.freeTextAnswer?.length
@@ -32,7 +33,7 @@ const markAsAcceptableIfAnswered=(answer: Answer) => {
 type ScreenProps=NativeStackScreenProps<AppScreens, "Questionare">
 type Props={ questionsMs?: QuestionsMicroservice }&ScreenProps
 
-type Data={ questions: QuestionPages, answers: Answer[], pageIndex: number }
+type Data={ questions: QuestionPages, answers: AnswerHolder[], pageIndex: number }
 
 // TODO: Double check that updates are batched in RN with react 18
 function QuestionareView({
@@ -50,8 +51,9 @@ function QuestionareView({
 
         questionsMs.questions()
             .then(result => {
-                const answers: Answer[]=result.pages.map(page => {
+                const answers: AnswerHolder[]=result.pages.map(page => {
                     return {
+                        question: page,
                         input: page.input,
                         acceptable: false
                     }

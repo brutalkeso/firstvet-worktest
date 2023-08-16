@@ -1,4 +1,5 @@
-import { Answer, Question } from "@/shared-types/QuestionsResponse"
+import { Question } from "@/shared-types/QuestionsResponse"
+import { AnswerHolder } from "../../AnswerHolder"
 import { View, Text, TextInput, KeyboardAvoidingView, Platform, FlatList, TouchableWithoutFeedback } from "react-native"
 import BasicButton from "../../reusable-components/BasicButton"
 import { useSafeAreaInsets } from "react-native-safe-area-context"
@@ -6,7 +7,7 @@ import { Theme } from "../../injection/Injection"
 
 type Props={
     questionPage: Question,
-    answer: Answer,
+    answer: AnswerHolder,
     answerUpdated: () => void,
     continueToNextQuestion: () => void
 }
@@ -43,7 +44,7 @@ function QuestionareSheetComponent({
 
 type InputProps={
     questionPage: Question,
-    answer: Answer,
+    answer: AnswerHolder,
     answerUpdated: () => void
 }
 const inputAccessoryViewID="QuestionareInputAccessoryId"
@@ -110,13 +111,14 @@ function QuestionareSheetInput({
                 />
             )
         default:
-            return <Text>asd</Text>
+            // Probably show an error view and allow user to continue to next question
+            return null
     }
 }
 
 const updateAnswerCheckbox=(
     alternatives: string[],
-    answer: Answer,
+    answer: AnswerHolder,
     index: number
 ) => {
     if (!answer.choiceAnswers) {
@@ -127,7 +129,7 @@ const updateAnswerCheckbox=(
 
 const updateAnswerRadio=(
     alternatives: string[],
-    answer: Answer,
+    answer: AnswerHolder,
     index: number
 ) => {
     answer.choiceAnswers=alternatives.map(_ => false)

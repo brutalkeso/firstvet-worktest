@@ -2,7 +2,7 @@ import { QuestionInput, QuestionPages } from "@/shared-types/QuestionsResponse"
 
 export const mockQuestions: QuestionPages={
     pages: [
-        /*{
+        {
             title: "Question 1",
             description: "Free text input",
             input: "freetext"
@@ -18,7 +18,7 @@ export const mockQuestions: QuestionPages={
             description: "Radio single selection",
             input: "radio",
             alternatives: [...Array(10)].map((_, i) => `Alternative ${i+1}`)
-        },*/
+        },
         {
             title: "Question 4",
             description: "Scalar, choose single value",

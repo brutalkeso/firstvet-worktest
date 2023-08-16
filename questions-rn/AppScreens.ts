@@ -1,8 +1,8 @@
-import { Answer } from "@/shared-types/QuestionsResponse"
+import { AnswerHolder } from "./AnswerHolder"
 
 export type AppScreens={
     Questionare: undefined,
     Summary: {
-        answers: Answer[]
+        answers: AnswerHolder[]
     }
 }

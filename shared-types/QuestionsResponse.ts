@@ -11,11 +11,3 @@ export type Question={
 export type QuestionPages={
     pages: Question[]
 }
-
-export type Answer={
-    input: QuestionInput,
-    freeTextAnswer?: string,
-    choiceAnswers?: boolean[],
-    scalar?: number,
-    acceptable: boolean
-}
