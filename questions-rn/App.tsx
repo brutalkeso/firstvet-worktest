@@ -17,12 +17,12 @@ export default function App() {
           <Stack.Screen
             name="Questionare"
             component={QuestionareView}
-            options={{headerShown: false, animation: 'slide_from_right'}}
+            options={{headerShown: false, animation: 'simple_push'}}
           />
           <Stack.Screen
             name="Summary"
             component={SummaryView}
-            options={{headerShown: false, animation: 'slide_from_left'}}
+            options={{headerShown: false, animation: 'simple_push'}}
           />
         </Stack.Navigator>
       </NavigationContainer>

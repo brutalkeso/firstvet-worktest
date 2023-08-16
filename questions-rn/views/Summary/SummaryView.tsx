@@ -32,6 +32,7 @@ const renderItem = (info: ListRenderItemInfo<AnswerHolder>) => {
 };
 
 function CheckboxComponent({info}: {info: ListRenderItemInfo<AnswerHolder>}) {
+  // not very smart to do this every render, but i dont feel like fixing it
   const answeredIndexes = info.item.choiceAnswers!.reduce(
     (aggr, nextV, index) => {
       if (nextV) {

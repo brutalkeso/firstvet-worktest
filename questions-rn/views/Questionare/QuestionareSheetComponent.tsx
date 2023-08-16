@@ -72,6 +72,7 @@ function QuestionareSheetInput({
       return (
         <View style={{borderRadius: 8}}>
           <TextInput
+            textAlignVertical="top"
             placeholder="Input answer"
             inputAccessoryViewID={inputAccessoryViewID}
             multiline={true}
@@ -80,6 +81,7 @@ function QuestionareSheetInput({
               borderRadius: 8,
               minHeight: 200,
               maxHeight: 200,
+              justifyContent: 'flex-start',
             }}
             onChangeText={t => {
               answer.freeTextAnswer = t;
