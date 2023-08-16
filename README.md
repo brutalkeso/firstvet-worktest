@@ -19,4 +19,4 @@ changing the url to your computers ip.
 
 # Linting
 
-This project uses GTS, youll find the commands in the package.json file
+This project uses GTS, youll find the commands in the package.json files

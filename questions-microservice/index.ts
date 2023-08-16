@@ -1,17 +1,16 @@
-import express from "express"
-import questions from "./src/paths/Questions"
-import { setGet } from "./src/PathTypeHelpers"
+import express from 'express';
+import questions from './src/paths/Questions';
+import {setGet} from './src/PathTypeHelpers';
 
-const app=express()
-const port=8080
+const app = express();
+const port = 8080;
 
-setGet(app, "/questions", questions)
+setGet(app, '/questions', questions);
 
 try {
-    app.listen(port, (): void => {
-        console.log(`Connected successfully on port ${port}`);
-    });
+  app.listen(port, (): void => {
+    console.log(`Connected successfully on port ${port}`);
+  });
 } catch (error) {
-    console.error(`Error occured: ${error}`);
+  console.error(`Error occured: ${error}`);
 }
-
