@@ -1,9 +1,25 @@
-import {Button, FlatList, ListRenderItemInfo, Text, View} from 'react-native';
+import {
+  StyleSheet,
+  Button,
+  FlatList,
+  ListRenderItemInfo,
+  Text,
+  View,
+} from 'react-native';
 import BetterSafeAreaView from '../BetterSafeAreaView';
 import {AnswerHolder} from '../../AnswerHolder';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {AppScreens} from '../../AppScreens';
 import {Theme} from '../../injection/Injection';
+
+const styles = StyleSheet.create({
+  titleText: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    paddingBottom: Theme.Paddings.A,
+  },
+  flatlistContainer: {paddingHorizontal: Theme.Paddings.column},
+});
 
 const renderItem = (info: ListRenderItemInfo<AnswerHolder>) => {
   switch (info.item.question.input) {
@@ -14,11 +30,7 @@ const renderItem = (info: ListRenderItemInfo<AnswerHolder>) => {
       return (
         <View>
           <Text
-            style={{
-              fontSize: 24,
-              fontWeight: 'bold',
-              paddingBottom: Theme.Paddings.A,
-            }}
+            style={styles.titleText}
           >{`Answers for ${info.item.question.title}`}</Text>
           <Text>{info.item.freeTextAnswer}</Text>
         </View>
@@ -45,11 +57,7 @@ function CheckboxComponent({info}: {info: ListRenderItemInfo<AnswerHolder>}) {
   return (
     <View>
       <Text
-        style={{
-          fontSize: 24,
-          fontWeight: 'bold',
-          paddingBottom: Theme.Paddings.A,
-        }}
+        style={styles.titleText}
       >{`Answers for ${info.item.question.title}`}</Text>
       {answeredIndexes.map(i => (
         <Text key={i}>{info.item.question.alternatives![i]}</Text>
@@ -65,11 +73,7 @@ function ScalarComponent({info}: {info: ListRenderItemInfo<AnswerHolder>}) {
   return (
     <View>
       <Text
-        style={{
-          fontSize: 24,
-          fontWeight: 'bold',
-          paddingBottom: Theme.Paddings.A,
-        }}
+        style={styles.titleText}
       >{`Answers for ${info.item.question.title}`}</Text>
       <Text>{`${info.item.scalar} from range ${scalarStart} - ${scalarEnd}`}</Text>
     </View>
@@ -82,7 +86,7 @@ function SummaryView({navigation, route}: NavProps) {
   return (
     <BetterSafeAreaView>
       <FlatList
-        contentContainerStyle={{paddingHorizontal: Theme.Paddings.column}}
+        contentContainerStyle={styles.flatlistContainer}
         data={route.params.answers}
         renderItem={renderItem}
         ListHeaderComponent={

@@ -1,9 +1,21 @@
 import {Question} from '@/shared-types/QuestionsResponse';
-import {AnswerHolder} from '../../../AnswerHolder';
-import {View, Text, KeyboardAvoidingView, Platform} from 'react-native';
-import BasicButton from '../../../reusable-components/BasicButton';
+import {AnswerHolder} from '../../AnswerHolder';
+import {
+  View,
+  Text,
+  KeyboardAvoidingView,
+  Platform,
+  StyleSheet,
+} from 'react-native';
+import BasicButton from '../../reusable-components/BasicButton';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import QuestionareSheetInput from '../QuestionareSheetInput';
+import QuestionareSheetInput from './QuestionareSheetSubComponents/QuestionareSheetInput';
+
+const styles = StyleSheet.create({
+  wrapper: {flex: 1, alignContent: 'flex-end'},
+  inputWrapper: {flex: 1},
+  headerTitle: {fontWeight: 'bold', fontSize: 24},
+});
 
 type Props = {
   questionPage: Question;
@@ -21,11 +33,9 @@ function QuestionareSheetComponent({
   const insets = useSafeAreaInsets();
 
   return (
-    <View style={{flex: 1, alignContent: 'flex-end'}}>
-      <View style={{flex: 1}}>
-        <Text style={{fontWeight: 'bold', fontSize: 24}}>
-          {questionPage.title}
-        </Text>
+    <View style={styles.wrapper}>
+      <View style={styles.inputWrapper}>
+        <Text style={styles.headerTitle}>{questionPage.title}</Text>
         <Text>{questionPage.description}</Text>
         <QuestionareSheetInput
           questionPage={questionPage}

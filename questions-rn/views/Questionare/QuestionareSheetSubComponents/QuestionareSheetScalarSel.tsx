@@ -1,7 +1,27 @@
-import {View, Text, FlatList, TouchableWithoutFeedback} from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Text,
+  FlatList,
+  TouchableWithoutFeedback,
+} from 'react-native';
 import {Theme} from '../../../injection/Injection';
 import {AnswerHolder} from '../../../AnswerHolder';
 import {Question} from '@/shared-types/QuestionsResponse';
+
+const styles = StyleSheet.create({
+  scalarSelectionWrapper: {
+    height: 100,
+    width: 100,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  scalarSelectionTitle: {
+    fontSize: 40,
+  },
+  horizontalSeperator: {width: Theme.Paddings.B},
+  flatlistContainer: {alignItems: 'center'},
+});
 
 function ScalarSelection({
   title,
@@ -15,24 +35,23 @@ function ScalarSelection({
   return (
     <TouchableWithoutFeedback onPress={onPress}>
       <View
-        style={{
-          backgroundColor: selected
-            ? Theme.Colors.primary
-            : Theme.Colors.ctaDisabled,
-          height: 100,
-          width: 100,
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
+        style={[
+          {
+            backgroundColor: selected
+              ? Theme.Colors.primary
+              : Theme.Colors.ctaDisabled,
+          },
+          styles.scalarSelectionWrapper,
+        ]}
       >
-        <Text style={{fontSize: 40}}>{title}</Text>
+        <Text style={styles.scalarSelectionTitle}>{title}</Text>
       </View>
     </TouchableWithoutFeedback>
   );
 }
 
 function HorizontalSeperator() {
-  return <View style={{width: Theme.Paddings.B}} />;
+  return <View style={styles.horizontalSeperator} />;
 }
 
 type Props = {
@@ -62,7 +81,7 @@ function QuestionareSheetScalarSel({
       )}
       ItemSeparatorComponent={HorizontalSeperator}
       data={questionPage.scalarAlternatives!}
-      contentContainerStyle={{alignItems: 'center'}}
+      contentContainerStyle={styles.flatlistContainer}
     />
   );
 }

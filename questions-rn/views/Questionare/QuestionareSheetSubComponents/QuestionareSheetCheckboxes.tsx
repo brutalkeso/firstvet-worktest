@@ -1,21 +1,21 @@
 import {Question} from '@/shared-types/QuestionsResponse';
 import {AnswerHolder} from '../../../AnswerHolder';
-import {View, Text, FlatList, TouchableWithoutFeedback} from 'react-native';
+import {
+  View,
+  Text,
+  FlatList,
+  TouchableWithoutFeedback,
+  StyleSheet,
+} from 'react-native';
 import {Theme} from '../../../injection/Injection';
 
-type Props = {
-  answer: AnswerHolder;
-  questionPage: Question;
-  updateCheckboxes: (
-    alternatives: string[],
-    answer: AnswerHolder,
-    index: number
-  ) => void;
-  answerUpdated: () => void;
-};
+const styles = StyleSheet.create({
+  seperator: {height: Theme.Paddings.B},
+  checkboxTitle: {paddingVertical: Theme.Paddings.D, fontSize: 16},
+});
 
 function Seperator() {
-  return <View style={{height: Theme.Paddings.B}} />;
+  return <View style={styles.seperator} />;
 }
 
 function Checkbox({
@@ -37,13 +37,22 @@ function Checkbox({
           flex: 1,
         }}
       >
-        <Text style={{paddingVertical: Theme.Paddings.D, fontSize: 16}}>
-          {title}
-        </Text>
+        <Text style={styles.checkboxTitle}>{title}</Text>
       </View>
     </TouchableWithoutFeedback>
   );
 }
+
+type Props = {
+  answer: AnswerHolder;
+  questionPage: Question;
+  updateCheckboxes: (
+    alternatives: string[],
+    answer: AnswerHolder,
+    index: number
+  ) => void;
+  answerUpdated: () => void;
+};
 
 function QuestionareSheetCheckboxes({
   answer,

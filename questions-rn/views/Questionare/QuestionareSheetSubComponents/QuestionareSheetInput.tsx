@@ -1,8 +1,8 @@
 import {Question} from '@/shared-types/QuestionsResponse';
-import {AnswerHolder} from '../../AnswerHolder';
-import QuestionareSheetFreetext from './QuestionareSheetComponents/QuestionareSheetFreetext';
-import QuestionareSheetScalarSel from './QuestionareSheetComponents/QuestionareSheetScalarSel';
-import QuestionareSheetCheckboxes from './QuestionareSheetComponents/QuestionareSheetCheckboxes';
+import {AnswerHolder} from '../../../AnswerHolder';
+import QuestionareSheetFreetext from './QuestionareSheetFreetext';
+import QuestionareSheetScalarSel from './QuestionareSheetScalarSel';
+import QuestionareSheetCheckboxes from './QuestionareSheetCheckboxes';
 
 type Props = {
   questionPage: Question;
