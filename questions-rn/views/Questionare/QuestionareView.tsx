@@ -9,7 +9,7 @@ import {AppScreens} from '../../AppScreens';
 
 import {QuestionPages} from '@/shared-types/QuestionsResponse';
 import {AnswerHolder} from '../../AnswerHolder';
-import QuestionareSheetComponent from './QuestionareSheetComponent';
+import QuestionareSheetComponent from './QuestionareSheetComponents/QuestionareSheetComponent';
 
 const markAsAcceptableIfAnswered = (answer: AnswerHolder) => {
   switch (answer.question.input) {
