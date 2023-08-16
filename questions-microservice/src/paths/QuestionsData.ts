@@ -1,37 +1,29 @@
-import { QuestionInput, Question, QuestionPage, QuestionPages } from "@/shared-types/QuestionsResponse"
-
-// helper functions
-const QuestionMapper=(questionInput: QuestionInput, index: number) => {
-    return {
-        questions: [
-            {
-                title: `Question ${index}`,
-                input: questionInput
-            }
-        ]
-    }
-}
-
-// data
-const pageValues: QuestionInput[]=["radio", "checkbox", "scalar", "freetext"]
-const singleQuestionPages: QuestionPage[]=pageValues.map(QuestionMapper)
-const multipleQuestionsPage: QuestionPage={
-    questions: [
-        {
-            title: "MulQuestion 1",
-            input: "radio"
-        },
-
-        {
-            title: "MulQuestion 2",
-            input: "freetext"
-        }
-    ]
-}
+import { QuestionInput, QuestionPages } from "@/shared-types/QuestionsResponse"
 
 export const mockQuestions: QuestionPages={
     pages: [
-        ...singleQuestionPages,
-        multipleQuestionsPage
+        /*{
+            title: "Question 1",
+            description: "Free text input",
+            input: "freetext"
+        },
+        {
+            title: "Question 2",
+            description: "Checkbox multiple selection",
+            input: "checkbox",
+            alternatives: [...Array(20)].map((_, i) => `Alternative ${i+1}`)
+        },
+        {
+            title: "Question 3",
+            description: "Radio single selection",
+            input: "radio",
+            alternatives: [...Array(10)].map((_, i) => `Alternative ${i+1}`)
+        },*/
+        {
+            title: "Question 4",
+            description: "Scalar, choose single value",
+            input: "scalar",
+            scalarAlternatives: [...Array(11)].map((_, i) => -5+i) // 
+        }
     ]
 }
