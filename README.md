@@ -18,3 +18,5 @@ changing the url to your computers ip.
 # Running tests
 
 # Linting
+
+This project uses GTS, youll find the commands in the package.json file

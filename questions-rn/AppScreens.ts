@@ -1,8 +1,8 @@
-import { AnswerHolder } from "./AnswerHolder"
+import {AnswerHolder} from './AnswerHolder';
 
-export type AppScreens={
-    Questionare: undefined,
-    Summary: {
-        answers: AnswerHolder[]
-    }
-}
+export type AppScreens = {
+  Questionare: undefined;
+  Summary: {
+    answers: AnswerHolder[];
+  };
+};

@@ -1,9 +1,9 @@
-import { Question } from "@/shared-types/QuestionsResponse"
+import {Question} from '@/shared-types/QuestionsResponse';
 
-export type AnswerHolder={
-    question: Question,
-    freeTextAnswer?: string,
-    choiceAnswers?: boolean[],
-    scalar?: number,
-    acceptable: boolean
-}
+export type AnswerHolder = {
+  question: Question;
+  freeTextAnswer?: string;
+  choiceAnswers?: boolean[];
+  scalar?: number;
+  acceptable: boolean;
+};

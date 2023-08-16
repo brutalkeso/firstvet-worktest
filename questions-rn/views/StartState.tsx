@@ -1,1 +1,1 @@
-export type StartState="initial"|"loading"|"error"
+export type StartState = 'initial' | 'loading' | 'error';

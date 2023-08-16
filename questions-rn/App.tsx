@@ -1,12 +1,12 @@
-import { StatusBar } from "expo-status-bar"
-import { SafeAreaProvider } from "react-native-safe-area-context";
-import { NavigationContainer } from "@react-navigation/native"
+import {StatusBar} from 'expo-status-bar';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
+import {NavigationContainer} from '@react-navigation/native';
 import QuestionareView from './views/Questionare/QuestionareView';
-import SummaryView from "./views/Summary/SummaryView";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { AppScreens } from "./AppScreens";
+import SummaryView from './views/Summary/SummaryView';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {AppScreens} from './AppScreens';
 
-const Stack=createNativeStackNavigator<AppScreens>();
+const Stack = createNativeStackNavigator<AppScreens>();
 
 export default function App() {
   return (
@@ -17,16 +17,15 @@ export default function App() {
           <Stack.Screen
             name="Questionare"
             component={QuestionareView}
-            options={{ headerShown: false, animation: "slide_from_right" }}
+            options={{headerShown: false, animation: 'slide_from_right'}}
           />
           <Stack.Screen
             name="Summary"
             component={SummaryView}
-            options={{ headerShown: false, animation: "slide_from_left" }}
+            options={{headerShown: false, animation: 'slide_from_left'}}
           />
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>
   );
 }
-
