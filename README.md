@@ -12,8 +12,8 @@ nvm use 20.5.1
 npm install
 npm run start
 
-If you are running the server locally, duplicate the .env file and name it .env.local, 
-changing the url to your servers ip.
+If your running on device, duplicate the .env file and name it .env.local, 
+changing the url to your computers ip.
 
 # Running tests
 

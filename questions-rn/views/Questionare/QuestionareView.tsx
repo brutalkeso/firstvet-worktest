@@ -4,6 +4,8 @@ import { Theme, questionsMicroservice } from "../../injection/Injection"
 import BetterSafeAreaView from "../BetterSafeAreaView"
 import QuestionareFetchComponent from "./QuestionareFetchComponent"
 import { StartState } from "../StartState"
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { AppScreens } from "../../AppScreens"
 
 import { QuestionPages, Answer } from "@/shared-types/QuestionsResponse"
 import QuestionareSheetComponent from "./QuestionareSheetComponent"
@@ -27,13 +29,15 @@ const markAsAcceptableIfAnswered=(answer: Answer) => {
             break
     }
 }
+type ScreenProps=NativeStackScreenProps<AppScreens, "Questionare">
+type Props={ questionsMs?: QuestionsMicroservice }&ScreenProps
 
-type Props={ questionsMs?: QuestionsMicroservice }
 type Data={ questions: QuestionPages, answers: Answer[], pageIndex: number }
 
 // TODO: Double check that updates are batched in RN with react 18
 function QuestionareView({
-    questionsMs=questionsMicroservice
+    questionsMs=questionsMicroservice,
+    navigation
 }: Props) {
     const [startState, setStartState]=useState<StartState>("initial")
     const [data, setData]=useState<Data>()
@@ -72,7 +76,7 @@ function QuestionareView({
             if (!data.answers[data.pageIndex].acceptable) { return }
 
             if (data.pageIndex===data.answers.length-1) {
-                // go to end screen
+                navigation.replace("Summary", { answers: data.answers })
             } else {
                 const newData={ ...data }
                 newData.pageIndex+=1
