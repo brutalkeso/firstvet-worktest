@@ -12,7 +12,6 @@ class QuestionsMicroservice {
     }
 
     questions=() => {
-        console.log(this.paths.questions)
         return fetch(this.paths.questions)
             .then(result => {
                 if (!result.ok) {
@@ -20,8 +19,9 @@ class QuestionsMicroservice {
                 }
                 return result.json()
             }).then((r) => {
-                return new Promise((res, rej) => {
-                    setTimeout(() => { res(r) }, 2000)
+                // added this just so loading is shown when running against local server
+                return new Promise((res, _) => {
+                    setTimeout(() => { res(r) }, 1000)
                 })
             })
             .then(j => j as QuestionPages)

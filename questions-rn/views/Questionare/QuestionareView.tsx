@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import QuestionsMicroservice from "../../network/QuestionsMicroservice"
 import { Theme, questionsMicroservice } from "../../injection/Injection"
 import BetterSafeAreaView from "../BetterSafeAreaView"
-import QuestionareFetchComponent from "./QuestionareFetchComponent"
+import QuestionareLoadingComponent from "./QuestionareLoadingComponent"
 import { StartState } from "../StartState"
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { AppScreens } from "../../AppScreens"
@@ -35,15 +35,16 @@ type Props={ questionsMs?: QuestionsMicroservice }&ScreenProps
 
 type Data={ questions: QuestionPages, answers: AnswerHolder[], pageIndex: number }
 
-// TODO: Double check that updates are batched in RN with react 18
 function QuestionareView({
     questionsMs=questionsMicroservice,
     navigation
 }: Props) {
     const [startState, setStartState]=useState<StartState>("initial")
     const [data, setData]=useState<Data>()
+    const [reload, setReload]=useState(0)
 
     useEffect(() => {
+        // Now with React 18 state updates are always batched
         setData(undefined)
         if (startState!=="loading"&&startState!=="initial") {
             setStartState("loading")
@@ -63,7 +64,7 @@ function QuestionareView({
                 console.log(e)
                 setStartState("error")
             })
-    }, [])
+    }, [reload])
 
     if (data) {
         const answerUpdated=() => {
@@ -100,7 +101,8 @@ function QuestionareView({
 
     return (
         <BetterSafeAreaView style={{ marginHorizontal: Theme.Paddings.column }}>
-            <QuestionareFetchComponent
+            <QuestionareLoadingComponent
+                retry={() => { setReload(d => d+1) }}
                 startState={startState}
             />
         </BetterSafeAreaView>

@@ -1,6 +1,6 @@
 import { Question } from "@/shared-types/QuestionsResponse"
 
-export type Answer={
+export type AnswerHolder={
     question: Question,
     freeTextAnswer?: string,
     choiceAnswers?: boolean[],

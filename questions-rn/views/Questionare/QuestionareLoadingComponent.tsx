@@ -3,8 +3,10 @@ import { StartState } from "../StartState"
 import LoadingComponent from "../../reusable-components/LoadingComponent"
 import ErrorComponent from "../../reusable-components/ErrorComponent"
 
-type Props={ startState: StartState }
-function QuestionareFetchComponent({ startState }: Props) {
+type Props={ startState: StartState, retry: () => void }
+function QuestionareLoadingComponent({
+    startState, retry
+}: Props) {
     switch (startState) {
         case "initial":
         case "loading":
@@ -16,10 +18,10 @@ function QuestionareFetchComponent({ startState }: Props) {
         case "error":
             return (
                 <View style={{ flex: 1, justifyContent: "center" }}>
-                    <ErrorComponent retry={() => console.log("lol")} />
+                    <ErrorComponent retry={retry} />
                 </View>
             )
     }
 }
 
-export default QuestionareFetchComponent
+export default QuestionareLoadingComponent
