@@ -23,7 +23,7 @@ export const mockQuestions: QuestionPages = {
       title: 'Question 4',
       description: 'Scalar, choose single value',
       input: 'scalar',
-      scalarAlternatives: [...Array(11)].map((_, i) => -5 + i), //
+      scalarAlternatives: [...Array(11)].map((_, i) => -5 + i),
     },
   ],
 };

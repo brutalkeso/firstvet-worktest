@@ -27,7 +27,29 @@ class QuestionsMicroservice {
           }, 1000);
         });
       })
-      .then(j => j as QuestionPages);
+      .then(r => this.verifyQuestionsResponse(r));
+  };
+
+  verifyQuestionsResponse = (result: unknown) => {
+    const questionPages = result as QuestionPages;
+    for (const page of questionPages.pages) {
+      switch (page.input) {
+        case 'checkbox':
+        case 'radio':
+          if ((page.alternatives?.length ?? 0) === 0) {
+            throw new Error('No alternatives in checkbox response');
+          }
+          break;
+        case 'scalar':
+          if ((page.scalarAlternatives?.length ?? 0) === 0) {
+            throw new Error('No scalar alternatives in scalar response');
+          }
+          break;
+        default:
+          break;
+      }
+    }
+    return questionPages;
   };
 }
 
